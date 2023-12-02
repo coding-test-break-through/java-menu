@@ -14,21 +14,8 @@ public class HateFoodValidator {
 
     public List<String> validate(String inputValue) {
         List<String> hateFoods = divideToList(inputValue);
-        validateNotBlankContainList(hateFoods);
         validateOverMaxFoodCount(hateFoods);
         return hateFoods;
-    }
-
-    private void validateNotBlankContainList(List<String> inputValue) {
-        if (hasBlank(inputValue)) {
-            throw new InputIllegalArgumentException(InputError.NOT_POSSIBLE_INPUT);
-        }
-    }
-
-
-    private boolean hasBlank(List<String> inputValue) {
-        return inputValue.stream()
-                .anyMatch(String::isBlank);
     }
 
     private List<String> divideToList(String inputValue) {
