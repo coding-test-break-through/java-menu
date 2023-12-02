@@ -3,6 +3,7 @@ package menu.view.input.validator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import menu.util.constant.MenuConstant;
 import menu.view.input.error.InputError;
 import menu.view.input.error.InputIllegalArgumentException;
 
@@ -32,7 +33,7 @@ public class HateFoodValidator {
             return new ArrayList<>();
         }
 
-        return Arrays.stream(inputValue.split(","))
+        return Arrays.stream(inputValue.split(MenuConstant.SPLITER))
                 .map(String::trim)
                 .toList();
     }
