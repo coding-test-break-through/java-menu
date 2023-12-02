@@ -29,7 +29,7 @@ public class HateFoodValidator {
     }
 
     private void validateOverMaxFoodCount(List<String> hateFoods) {
-        if (hateFoods.size() > MAX_HATE_FOOD_COUNT || hateFoods.size() < MIN_HATE_FOOD_COUNT) {
+        if (hateFoods.size() > MAX_HATE_FOOD_COUNT) {
             throw new InputIllegalArgumentException(InputError.NOT_POSSIBLE_INPUT);
         }
     }
