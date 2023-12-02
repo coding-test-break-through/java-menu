@@ -2,15 +2,22 @@ package menu.view.input.validator;
 
 import java.util.Arrays;
 import java.util.List;
+import menu.util.constant.MenuConstant;
 import menu.view.input.error.InputError;
 import menu.view.input.error.InputIllegalArgumentException;
 
 public class CoachValidator {
 
+    private static final int MIN_NAME_LENGTH = 2;
+    private static final int MAX_NAME_LENGTH = 4;
+    private static final int MIN_COACH_COUNT = 2;
+    private static final int MAX_COACH_COUNT = 5;
+
     public List<String> validate(String coache) {
         validateNotBlank(coache);
         List<String> coaches = divideToList(coache);
         validateAllInRangeName(coaches);
+        validateCoachCount(coaches);
         return coaches;
     }
 
@@ -21,7 +28,7 @@ public class CoachValidator {
     }
 
     private List<String> divideToList(String inputValue) {
-        return Arrays.stream(inputValue.split(","))
+        return Arrays.stream(inputValue.split(MenuConstant.SPLITER))
                 .map(String::trim)
                 .toList();
     }
@@ -32,16 +39,22 @@ public class CoachValidator {
     }
 
     private void validateAllInRangeName(List<String> inputValue) {
-        if (hasOverLengthName(inputValue) || isNotInRangeCoachCount(inputValue.size())) {
-            throw new InputIllegalArgumentException(InputError.NOT_POSSIBLE_INPUT);
+        if (hasOverLengthName(inputValue)) {
+            throw new InputIllegalArgumentException(InputError.COACH_NAME_NOT_IN_RANGE, inputValue);
+        }
+    }
+
+    private void validateCoachCount(List<String> inputValue) {
+        if (isNotInRangeCoachCount(inputValue.size())) {
+            throw new InputIllegalArgumentException(InputError.COACH_COUNT_NOT_IN_RANGE, inputValue);
         }
     }
 
     private boolean isNotInRangeName(int number) {
-        return number < 2 || number > 4;
+        return number < MIN_NAME_LENGTH || number > MAX_NAME_LENGTH;
     }
 
     private boolean isNotInRangeCoachCount(int number) {
-        return number < 2 || number > 5;
+        return number < MIN_COACH_COUNT || number > MAX_COACH_COUNT;
     }
 }
