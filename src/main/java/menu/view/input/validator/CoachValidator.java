@@ -40,13 +40,15 @@ public class CoachValidator {
 
     private void validateAllInRangeName(List<String> inputValue) {
         if (hasOverLengthName(inputValue)) {
-            throw new InputIllegalArgumentException(InputError.COACH_NAME_NOT_IN_RANGE, inputValue);
+            throw new InputIllegalArgumentException(InputError.COACH_NAME_NOT_IN_RANGE, MIN_COACH_COUNT,
+                    MAX_COACH_COUNT);
         }
     }
 
     private void validateCoachCount(List<String> inputValue) {
         if (isNotInRangeCoachCount(inputValue.size())) {
-            throw new InputIllegalArgumentException(InputError.COACH_COUNT_NOT_IN_RANGE, inputValue);
+            throw new InputIllegalArgumentException(InputError.COACH_COUNT_NOT_IN_RANGE, MIN_NAME_LENGTH,
+                    MAX_NAME_LENGTH);
         }
     }
 

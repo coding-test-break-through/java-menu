@@ -9,6 +9,9 @@ import menu.view.input.error.InputIllegalArgumentException;
 
 public class HateFoodValidator {
 
+    private static final int MAX_HATE_FOOD_COUNT = 2;
+    private static final int MIN_HATE_FOOD_COUNT = 1;
+
     public List<String> validate(String inputValue) {
         List<String> hateFoods = divideToList(inputValue);
         validateNotBlankContainList(hateFoods);
@@ -39,7 +42,7 @@ public class HateFoodValidator {
     }
 
     private void validateOverMaxFoodCount(List<String> hateFoods) {
-        if (hateFoods.size() > 2) {
+        if (hateFoods.size() > MAX_HATE_FOOD_COUNT || hateFoods.size() < MIN_HATE_FOOD_COUNT) {
             throw new InputIllegalArgumentException(InputError.NOT_POSSIBLE_INPUT);
         }
     }

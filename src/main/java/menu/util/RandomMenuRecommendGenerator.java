@@ -2,8 +2,9 @@ package menu.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import menu.util.constant.MenuConstant;
 
-public class RandomMenuRecommendGenerator implements RandomGenerator{
+public class RandomMenuRecommendGenerator implements RandomGenerator {
 
     @Override
     public String generateFromList(List<String> menus) {
@@ -12,6 +13,6 @@ public class RandomMenuRecommendGenerator implements RandomGenerator{
 
     @Override
     public int pickRandomNumber() {
-        return Randoms.pickNumberInRange(1,5);
+        return Randoms.pickNumberInRange(MenuConstant.START_MENU_RECOMMEND, MenuConstant.END_MENU_RECOMMEND);
     }
 }
