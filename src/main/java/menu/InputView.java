@@ -15,6 +15,7 @@ public class InputView {
                 System.out.println("코치의 이름을 입력해 주세요. (, 로 구분)");
                 String names = Console.readLine();
                 validator.checkNames(names);
+                System.out.println();
                 return Arrays.stream(names.split(","))
                         .collect(Collectors.toList());
             } catch (IllegalArgumentException e) {
@@ -29,6 +30,7 @@ public class InputView {
                 System.out.println(name + "(이)가 못 먹는 메뉴를 입력해 주세요.");
                 String menus = Console.readLine();
                 validator.checkMenus(menus);
+                System.out.println();
                 return Arrays.stream(menus.split(","))
                         .collect(Collectors.toList());
             } catch (IllegalArgumentException e) {

@@ -1,5 +1,6 @@
 package menu;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class Validator {
@@ -41,8 +42,11 @@ public class Validator {
     }
 
     void checkExistOfMenu(String input) {
-        if (Menu.Food.valueOfKoreanName(input) == null) {
-            throw new IllegalArgumentException("[ERROR] 추천 메뉴 목록에 없는 메뉴입니다.");
+        for (Menu menu : Menu.values()) {
+            if (menu.getMenus().contains(input)) {
+                return;
+            }
         }
+        throw new IllegalArgumentException("[ERROR] 추천 메뉴 목록에 없는 메뉴입니다.");
     }
 }
