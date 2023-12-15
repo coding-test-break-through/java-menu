@@ -12,13 +12,13 @@ public class Validator {
         }
     }
 
-    void checkNumberOfNames(String[] input) {
+    private void checkNumberOfNames(String[] input) {
         if (input.length > 5 || input.length < 2) {
             throw new IllegalArgumentException("[ERROR] 코치는 2명 이상 5명 이하여야 합니다.");
         }
     }
 
-    void checkLengthOfName(String input) {
+    private void checkLengthOfName(String input) {
         if (input.length() > 4 || input.length() < 2) {
             throw new IllegalArgumentException("[ERROR] 코치의 이름은 2글자 이상 4글자 이하여야 합니다.");
         }
@@ -35,13 +35,13 @@ public class Validator {
         }
     }
 
-    void checkNumberOfMenus(String[] input) {
+    private void checkNumberOfMenus(String[] input) {
         if (input.length > 2) {
             throw new IllegalArgumentException("[ERROR] 못 먹는 메뉴의 개수는 2개 이하여야 합니다.");
         }
     }
 
-    void checkExistOfMenu(String input) {
+    private void checkExistOfMenu(String input) {
         for (Menu menu : Menu.values()) {
             if (menu.getMenus().contains(input)) {
                 return;

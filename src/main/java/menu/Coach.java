@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Coach {
     private final String name;
-    List<String> menusCantEat = new ArrayList<>();
-    List<String> menusAlreadyEat = new ArrayList<>();
+    private List<String> menusCantEat = new ArrayList<>();
+    private List<String> menusAlreadyEat = new ArrayList<>();
 
     Coach(String name) {
         this.name = name;

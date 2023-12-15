@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class MenuSuggestion {
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
-    List<Coach> coaches = new ArrayList<Coach>();
-    List<String> categories = new ArrayList<>();
+    private List<Coach> coaches = new ArrayList<Coach>();
+    private List<String> categories = new ArrayList<>();
 
     void play() {
         setup();
@@ -19,19 +19,19 @@ public class MenuSuggestion {
         printResult();
     }
 
-    void setup() {
+    private void setup() {
         outputView.showStart();
         setupCoaches();
     }
 
-    void setupCoaches() {
+    private void setupCoaches() {
         List<String> names = inputView.readNames();
         for (String name : names) {
             setupCoachCantEat(name);
         }
     }
 
-    void setupCoachCantEat(String name) {
+    private void setupCoachCantEat(String name) {
         Coach coach = new Coach(name);
         List<String> menus = inputView.readMenus(name);
         if (menus.size() == 1 && Objects.equals(menus.get(0), "")) {
@@ -44,14 +44,14 @@ public class MenuSuggestion {
         coaches.add(coach);
     }
 
-    void doSuggestion() {
+    private void doSuggestion() {
         Menu category = pickCategory();
         for (Coach coach : coaches) {
             pickMenu(coach, category);
         }
     }
 
-    Menu pickCategory() {
+    private Menu pickCategory() {
         while (true) {
             Menu category = Menu.getCategoryFromValue(Randoms.pickNumberInRange(1, 5));
             if (Collections.frequency(categories, category.getKoreanName()) >= 2 ) {
@@ -62,7 +62,7 @@ public class MenuSuggestion {
         }
     }
 
-    void pickMenu(Coach coach, Menu category) {
+    private void pickMenu(Coach coach, Menu category) {
         while (true) {
             String menu = Randoms.shuffle(category.getMenus()).get(0);
             if (!coach.isPossibleMenu(menu)) {
@@ -73,7 +73,7 @@ public class MenuSuggestion {
         }
     }
 
-    void printResult() {
+    private void printResult() {
         outputView.showResult(coaches, categories);
         outputView.showEnd();
     }
